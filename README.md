@@ -33,7 +33,7 @@ one hour.
 
 * Start time: 11.22 pm
 
-* Finish time: 8.30pm
+* Finish time: 12.00pm
 
-* Actual time needed to complete: arround 4 hour I face a problem.
+* Actual time needed to complete: arround half hour I face a problem.
 
