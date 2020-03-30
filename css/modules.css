@@ -1,0 +1,11 @@
+#photo-template{
+    width: 80%;
+}
+#photo-template img{
+width: 100px;
+}
+section img{
+    width: 250px;
+    height: 250px;
+    margin: 0px 150px;
+}
