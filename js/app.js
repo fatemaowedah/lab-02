@@ -18,13 +18,9 @@ $(document).ready(function () {
         hornAll.push(this);
     }
     Horn.prototype.render = function () {
-        let $hornClone = $("#photo-template").clone();
-        $hornClone.find("h2").text(this.title);
-        $hornClone.find("img").attr("src", this.image_url);
-        $hornClone.find("p").text(this.description);
-        $hornClone.removeAttr("id");
-        $hornClone.attr("class", this.keyword);
-        $("main").append($hornClone);
+        let $hornClone = $("#photo-template").html();
+        var reender = Mustache.render($hornClone, this);
+        $("main").append(reender);
     };
     Horn.prototype.selectt = function () {
         let imageSelect = $('.selectOption');
@@ -35,7 +31,10 @@ $(document).ready(function () {
     };
     const readJson = () => {
         $.ajax("../data/page-1.json", { method: "get", dataType: "JSON" }).then(data => {
+            hornAll = [];
+            $('main').empty();
             data.forEach(hornItem => {
+               
                 let hhorn = new Horn(hornItem);
                 hhorn.selectt();
                 hhorn.render();
@@ -43,13 +42,69 @@ $(document).ready(function () {
         });
     };
     readJson();
-});
-$('.selectOption').change(function(){
-    var selectedKey = $(this).children('option:selected').val();
-    keywordAll.forEach(function(val){
-        if(selectedKey === val){
-            $('div').hide();
-            $(`.${val}`).show();
-        }
+    const readJson1 = () => {
+        $.ajax("../data/page-2.json", { method: "get", dataType: "JSON" }).then(data => {
+            hornAll = [];
+                $('main').empty();
+            data.forEach(hornItem => {
+                
+                let hhorn = new Horn(hornItem);
+                hhorn.selectt();
+                hhorn.render();
+            });
+        });
+    };
+    $('.selectOption').change(function () {
+        var selectedKey = $(this).children('option:selected').val();
+        keywordAll.forEach(function (val) {
+            if (selectedKey === val) {
+                $('div').hide();
+                $(`.${val}`).show();
+            }
+        })
     })
-})
+
+    let pageOneSelector = () => {
+        // keywordAll.empty();
+        $('div').remove();
+        keywordAll.splice(0, keywordAll.length);
+        $('.selectOption').empty('');
+        readJson();
+
+    };
+    let pageTwoSelector = () => {
+        // keywordAll.empty();    
+        $('div').remove();
+        keywordAll.splice(0, keywordAll.length);
+        $('.selectOption').empty('');
+        readJson1();
+    };
+    $('#pageone').on('click', pageOneSelector);
+    $('#pagetwo').on('click', pageTwoSelector);
+
+    const SelectSort1 = () => {
+        hornAll.sort((a, b) => {
+            if (a.title.toUpperCase() < b.title.toUpperCase()) {
+                return -1;
+            }else if(a.title.toUpperCase() > b.title.toUpperCase()){
+                return 1;
+            }
+        });
+        $('main').empty('');
+        console.log(hornAll);
+        hornAll.forEach(val =>{
+            val.render();
+        })
+    }
+    const SelectSort2 = () => {
+        hornAll.sort((a, b) => {
+            return a.horns - b.horns;
+        });
+        $('main').empty();
+        hornAll.forEach(val =>{
+            val.render();
+        })
+    }
+    $('#titlee').on('click', SelectSort1);
+    $('#no').on('click', SelectSort2);
+});

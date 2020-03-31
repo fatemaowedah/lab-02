@@ -9,6 +9,6 @@ div img{
     height: 250px;
     margin: 0px 20px;
 }
-div:first-child{
+/* div:first-child{
     display: none;
-}
+} */

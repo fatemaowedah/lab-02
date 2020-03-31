@@ -5,6 +5,9 @@ header{
 section{
     margin-top: 0px;
     display: hidden;
+    width: 80%;
+    margin-top: auto;
+    margin-left: auto;
 }
 div{
     width: 20%;
@@ -12,7 +15,7 @@ div{
     margin: 0px auto;
     margin-left: 55px;
     display: inline-block;
-    min-height: 400px;
+    min-height: 500px;
 }
 h1{
     text-align: center;
