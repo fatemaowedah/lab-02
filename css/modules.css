@@ -1,11 +1,14 @@
 #photo-template{
-    width: 80%;
+    clear: both;
 }
 #photo-template img{
 width: 100px;
 }
-section img{
+div img{
     width: 250px;
     height: 250px;
-    margin: 0px 150px;
+    margin: 0px 20px;
+}
+div:first-child{
+    display: none;
 }

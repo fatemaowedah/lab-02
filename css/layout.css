@@ -3,15 +3,21 @@ header{
     color: navy;
 }
 section{
-    width: 40%;
+    margin-top: 0px;
+    display: hidden;
+}
+div{
+    width: 20%;
     float: left;
     margin: 0px auto;
     margin-left: 55px;
+    display: inline-block;
+    min-height: 400px;
 }
 h1{
     text-align: center;
     font-size: 40px;
-    margin-top: 20px;
+    margin-top: 100px;
     font-family: 'Comic Neue', cursive;
 }
 select{
