@@ -48,7 +48,7 @@ $('.selectOption').change(function(){
     var selectedKey = $(this).children('option:selected').val();
     keywordAll.forEach(function(val){
         if(selectedKey === val){
-            $('section').hide();
+            $('div').hide();
             $(`.${val}`).show();
         }
     })
